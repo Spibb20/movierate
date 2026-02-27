@@ -1,0 +1,21 @@
+<jpg xmlns="http://www.w3.org/2000/jpg" width="800" height="1200" viewBox="0 0 800 1200">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#06b6d4"/>
+<stop offset="100%" stop-color="#164e63"/>
+</linearGradient>
+</defs>
+<rect width="800" height="1200" fill="url(#g)"/>
+<circle cx="640" cy="170" r="180" fill="rgba(255,255,255,0.08)"/>
+<circle cx="180" cy="980" r="220" fill="rgba(255,255,255,0.06)"/>
+<rect x="60" y="70" width="680" height="1060" rx="34" ry="34" fill="rgba(15,23,42,0.18)" stroke="rgba(255,255,255,0.18)"/>
+<text x="84" y="140" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="36" letter-spacing="6">MOVIERATE.MN</text>
+<text x="84" y="320" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="700">Stellar Odyssey</text>
+<text x="84" y="392" fill="rgba(255,255,255,0.82)" font-family="Arial, Helvetica, sans-serif" font-size="38">Одны аялал</text>
+<text x="84" y="494" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="30">Genre: Sci-Fi, Action</text>
+<text x="84" y="548" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="30">Director: James Nolan</text>
+<text x="84" y="602" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="30">IMDb 8.7  •  2h 28min  •  2024</text>
+<text x="84" y="760" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="180" font-weight="700">4.5</text>
+<text x="84" y="840" fill="rgba(255,255,255,0.85)" font-family="Arial, Helvetica, sans-serif" font-size="48">User rating</text>
+<text x="84" y="1000" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="34">★★★★☆</text>
+</jpg>
