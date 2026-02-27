@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="mn" lang="mn">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="mn" />
+    <title>Профайл - MovieRate.mn</title>
+    <meta
+      name="description"
+      content="Профайл хуудас (демо): түрээс, хадгалсан, тохиргоо."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
+  </head>
+
+  <body>
+    <div>
+      <a class="skip-link" href="#main">Үндсэн агуулга руу алгасах</a>
+    </div>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__wrap">
+            <img
+              class="brand__logo"
+              src="assets/img/logo.svg"
+              alt="MovieRate.mn лого"
+            />
+            <span class="brand__text">MovieRate.mn</span>
+          </span>
+        </a>
+
+        <ul class="nav">
+          <li><a class="nav__link" href="index.html">Нүүр</a></li>
+          <li><a class="nav__link" href="movies.html">Кино</a></li>
+          <li>
+            <a class="nav__link is-active" href="profile.html">Профайл</a>
+          </li>
+          <li><a class="nav__link" href="login.html">Нэвтрэх</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container page">
+      <h1 class="page__title" id="main">Bat-Erdene</h1>
+      <p class="muted">baterdene@example.com</p>
+
+      <div class="media-box">
+        <h2 class="media-title">Миний түрээсэлсэн</h2>
+        <p>
+          <a class="link" href="movie-1.html">Одны аялал</a>,
+          <a class="link" href="movie-4.html">Парис дахь сүүлийн зун</a>
+        </p>
+      </div>
+
+      <div class="media-box">
+        <h2 class="media-title">Хадгалсан</h2>
+        <p class="muted">Favorites: 1, 4</p>
+        <p><a class="link" href="movie-1.html">Одны аялал</a></p>
+        <p><a class="link" href="movie-4.html">Парис дахь сүүлийн зун</a></p>
+      </div>
+
+      <div class="media-box">
+        <h2 class="media-title">Тохиргоо</h2>
+        <form action="profile.html" method="get">
+          <div class="field">
+            <label class="label" for="name">Нэр</label>
+            <input
+              class="input"
+              type="text"
+              id="name"
+              name="name"
+              value="Bat-Erdene"
+            />
+          </div>
+
+          <div class="field">
+            <label class="label" for="email">И-мэйл</label>
+            <input
+              class="input"
+              type="text"
+              id="email"
+              name="email"
+              value="baterdene@example.com"
+            />
+          </div>
+
+          <div class="field">
+            <button class="btn btn--primary" type="submit">Хадгалах</button>
+            <a class="btn btn--ghost" href="index.html">Гарах</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container footer__inner">
+        <p class="muted">© 2026 MovieRate.mn</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="mn" lang="mn">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="mn" />
+    <title>Бүртгүүлэх - MovieRate.mn</title>
+    <meta name="description" content="MovieRate.mn бүртгүүлэх хуудас (демо)." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
+  </head>
+
+  <body>
+    <div>
+      <a class="skip-link" href="#main">Үндсэн агуулга руу алгасах</a>
+    </div>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__wrap">
+            <img
+              class="brand__logo"
+              src="assets/img/logo.svg"
+              alt="MovieRate.mn лого"
+            />
+            <span class="brand__text">MovieRate.mn</span>
+          </span>
+        </a>
+
+        <ul class="nav">
+          <li><a class="nav__link" href="index.html">Нүүр</a></li>
+          <li><a class="nav__link" href="movies.html">Кино</a></li>
+          <li><a class="nav__link" href="profile.html">Профайл</a></li>
+          <li><a class="nav__link" href="login.html">Нэвтрэх</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container page auth">
+      <div class="card">
+        <h1 id="main">Бүртгүүлэх</h1>
+        <p class="muted">Бүртгүүлсний дараа login руу шилжинэ.</p>
+
+        <form action="login.html" method="get">
+          <div class="field">
+            <label class="label" for="name">Нэр</label>
+            <input class="input" type="text" id="name" name="name" value="" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="email">И-мэйл</label>
+            <input class="input" type="text" id="email" name="email" value="" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="password">Нууц үг</label>
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              value=""
+            />
+          </div>
+
+          <div class="field">
+            <label class="label" for="confirm">Нууц үг давтах</label>
+            <input
+              class="input"
+              type="password"
+              id="confirm"
+              name="confirm"
+              value=""
+            />
+          </div>
+
+          <div class="field">
+            <button class="btn btn--primary" type="submit">Бүртгүүлэх</button>
+            <a class="btn btn--ghost" href="login.html">Нэвтрэх</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container footer__inner">
+        <p class="muted">© 2026 MovieRate.mn</p>
+      </div>
+    </div>
+  </body>
+</html>
