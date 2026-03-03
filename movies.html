@@ -1,172 +1,815 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="mn" lang="mn">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta http-equiv="content-language" content="mn" />
-    <title>MovieRate.mn</title>
-    <meta name="description" content="Кино жагсаалт, дэлгэрэнгүй, үнэлгээ." />
+    <meta
+      http-equiv="Content-Type"
+      content="application/xhtml+xml; charset=utf-8"
+    />
+    <meta http-equiv="Content-Language" content="mn" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Бүх кинонуудын жагсаалт, ангилал болон жилээр нь бүлэглэсэн XHTML 1.0 Strict хуудас."
+    />
+    <meta
+      name="keywords"
+      content="MovieRate, кино, үнэлгээ, трейлэр, Монгол, MovieRate.mn"
+    />
     <meta name="robots" content="index,follow" />
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
-    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
+    <title>Кино жагсаалт - MovieRate.mn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
-
-  <body>
-    <div>
-      <a class="skip-link" href="#main">Үндсэн агуулга руу алгасах</a>
+  <body class="movies">
+    <div class="theme-toggle-wrap">
+      <form action="#" method="get">
+        <div>
+          <input
+            type="checkbox"
+            id="theme-toggle"
+            name="theme-toggle"
+            value="1"
+          />
+        </div>
+      </form>
     </div>
-
-    <div class="topbar">
-      <div class="container topbar__inner">
-        <a class="brand" href="index.html">
-          <span class="brand__wrap">
-            <img
-              class="brand__logo"
-              src="assets/img/logo.svg"
-              alt="MovieRate.mn лого"
-            />
-            <span class="brand__text">MovieRate.mn</span>
-          </span>
-        </a>
-
-        <ul class="nav">
-          <li><a class="nav__link is-active" href="index.html">Нүүр</a></li>
-          <li><a class="nav__link" href="movies.html">Кино</a></li>
-          <li><a class="nav__link" href="profile.html">Профайл</a></li>
-          <li><a class="nav__link" href="login.html">Нэвтрэх</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="hero">
-      <div class="container">
-        <h1 class="hero__title" id="main">MovieRate.mn</h1>
-        <p class="hero__sub">Кино жагсаалт, дэлгэрэнгүй, үнэлгээ.</p>
-
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="movies.html">Кино үзэх</a>
-          <a class="btn btn--ghost" href="register.html">Бүртгүүлэх</a>
+    <div class="site">
+      <div class="topbar">
+        <div class="page topbar-inner">
+          <div class="brand">
+            <span class="brand-mark"></span>
+            <a href="index.html" class="brand-word">MovieRate</a>
+          </div>
+          <div class="nav">
+            <a href="index.html">Нүүр</a>
+            <a href="movies.html">Төрлөөр хайх</a>
+            <a href="login.html">Нэвтрэх</a>
+            <a href="profile.html" class="cta">Профайл</a>
+            <label for="theme-toggle" class="theme-switch">Dark / Light</label>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="container section">
-      <div class="section__head">
-        <h2 class="section__title">Шинэ кино</h2>
-        <p><a class="link" href="movies.html">Бүгдийг үзэх</a></p>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <p><a class="card__link" href="movie-1.html">Одны аялал</a></p>
-          <p>
-            <img
-              class="card__img"
-              src="assets/img/stellar-odyssey.jpg"
-              alt="Одны аялал киноны постер"
-            />
-          </p>
-        </div>
-
-        <div class="card">
-          <p><a class="card__link" href="movie-2.html">Чимээгүй гэрч</a></p>
-          <p>
-            <img
-              class="card__img"
-              src="assets/img/silent-witness.jpg"
-              alt="Чимээгүй гэрч киноны постер"
-            />
-          </p>
-        </div>
-
-        <div class="card">
-          <p>
-            <a class="card__link" href="movie-4.html">Парис дахь сүүлийн зун</a>
-          </p>
-          <p>
-            <img
-              class="card__img"
-              src="assets/img/last-summer-paris.jpg"
-              alt="Парис дахь сүүлийн зун киноны постер"
-            />
-          </p>
-        </div>
-
-        <div class="card">
-          <p><a class="card__link" href="movie-6.html">Хоосон газар</a></p>
-          <p>
-            <img
-              class="card__img"
-              src="assets/img/the-hollow.jpg"
-              alt="Хоосон газар киноны постер"
-            />
-          </p>
+      <div class="page section">
+        <h1>Кино жагсаалт</h1>
+        <p class="lead">
+          Хайлт, шүүлтүүр, жанрын control-уудыг харагдах байдлаар хадгалсан
+          static хувилбар. Ажиллагааны ихэнхийг framework нь идчихсэн ч ядаж
+          интерфэйс нь энд байна.
+        </p>
+        <div class="two-col top-gap">
+          <div class="panel card-pad">
+            <div class="field">
+              <label for="movie-search">Кино хайх</label>
+              <input type="text" id="movie-search" value="" />
+            </div>
+            <div class="field">
+              <label>Ангилал</label>
+              <div class="filter-row">
+                <a href="#action" class="mini-button">Action</a>
+                <a href="#drama" class="mini-button">Drama</a>
+                <a href="#horror" class="mini-button">Horror</a>
+                <a href="#comedy" class="mini-button">Comedy</a>
+                <a href="#sci-fi" class="mini-button">Sci-Fi</a>
+                <a href="#romance" class="mini-button">Romance</a>
+                <a href="#thriller" class="mini-button">Thriller</a>
+                <a href="#animation" class="mini-button">Animation</a>
+              </div>
+            </div>
+            <div class="field">
+              <label>Он</label>
+              <div class="filter-row">
+                <a href="#y2024" class="mini-button">2024</a>
+                <a href="#y2023" class="mini-button">2023</a>
+                <a href="#all-movies" class="mini-button">Бүгд</a>
+              </div>
+            </div>
+          </div>
+          <div class="panel card-pad">
+            <div class="stats">
+              <div class="stat">
+                <span class="kicker">Нийт кино</span><strong>6</strong
+                ><span class="small">Жагсаалт</span>
+              </div>
+              <div class="stat">
+                <span class="kicker">2024</span><strong>4</strong
+                ><span class="small">Шинэ гарсан</span>
+              </div>
+              <div class="stat">
+                <span class="kicker">Дундаж</span><strong>4.1</strong
+                ><span class="small">User rating</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="container divider">
-      <div class="divider__line"></div>
-    </div>
-
-    <div class="container section">
-      <div class="section__head">
-        <h2 class="section__title">Өндөр үнэлгээтэй</h2>
-        <p><a class="link" href="movies.html">Бүгдийг үзэх</a></p>
+      <div class="page section" id="all-movies">
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-1.html" class="poster-link"
+                ><img
+                  src="assets/stellar-odyssey.jpg"
+                  alt="Stellar Odyssey постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.5 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-1.html" class="card-title-link"
+                  >Stellar Odyssey</a
+                >
+              </h3>
+              <p class="small">Одны аялал</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Sci-Fi</span><span class="tag">Action</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-2.html" class="poster-link"
+                ><img
+                  src="assets/silent-witness.jpg"
+                  alt="Silent Witness постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.2 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-2.html" class="card-title-link"
+                  >Silent Witness</a
+                >
+              </h3>
+              <p class="small">Чимээгүй гэрч</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Thriller</span><span class="tag">Drama</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-3.html" class="poster-link"
+                ><img
+                  src="assets/great-escape.jpg"
+                  alt="The Great Escape постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.0 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-3.html" class="card-title-link"
+                  >The Great Escape</a
+                >
+              </h3>
+              <p class="small">Агуу дүрвэлт</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Animation</span><span class="tag">Comedy</span
+                ><span class="small">2023</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-4.html" class="poster-link"
+                ><img
+                  src="assets/last-summer-paris.jpg"
+                  alt="Last Summer in Paris постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.3 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-4.html" class="card-title-link"
+                  >Last Summer in Paris</a
+                >
+              </h3>
+              <p class="small">Парис дахь сүүлийн зун</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Romance</span><span class="tag">Drama</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-5.html" class="poster-link"
+                ><img
+                  src="assets/iron-resolve.jpg"
+                  alt="Iron Resolve постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">3.8 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-5.html" class="card-title-link">Iron Resolve</a>
+              </h3>
+              <p class="small">Төмөр зориг</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Action</span><span class="tag">Thriller</span
+                ><span class="small">2023</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-6.html" class="poster-link"
+                ><img
+                  src="assets/the-hollow.jpg"
+                  alt="The Hollow постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">3.9 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-6.html" class="card-title-link">The Hollow</a>
+              </h3>
+              <p class="small">Хоосон газар</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Horror</span><span class="tag">Thriller</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="grid">
-        <div class="card">
-          <p><a class="card__link" href="movie-1.html">Одны аялал</a></p>
-          <p>
-            <img
-              class="card__img"
-              src="assets/img/stellar-odyssey.jpg"
-              alt="Одны аялал киноны постер"
-            />
-          </p>
+      <div class="page section" id="action">
+        <div class="title-row">
+          <h2>Action</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
         </div>
-
-        <div class="card">
-          <p>
-            <a class="card__link" href="movie-4.html">Парис дахь сүүлийн зун</a>
-          </p>
-          <p>
-            <img
-              class="card__img"
-              src="assets/img/last-summer-paris.jpg"
-              alt="Парис дахь сүүлийн зун киноны постер"
-            />
-          </p>
-        </div>
-
-        <div class="card">
-          <p><a class="card__link" href="movie-2.html">Чимээгүй гэрч</a></p>
-          <p>
-            <img
-              class="card__img"
-              src="assets/img/silent-witness.jpg"
-              alt="Чимээгүй гэрч киноны постер"
-            />
-          </p>
-        </div>
-
-        <div class="card">
-          <p><a class="card__link" href="movie-3.html">Агуу дүрвэлт</a></p>
-          <p>
-            <img
-              class="card__img"
-              src="assets/img/great-escape.jpg"
-              alt="Агуу дүрвэлт киноны постер"
-            />
-          </p>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-1.html" class="poster-link"
+                ><img
+                  src="assets/stellar-odyssey.jpg"
+                  alt="Stellar Odyssey постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.5 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-1.html" class="card-title-link"
+                  >Stellar Odyssey</a
+                >
+              </h3>
+              <p class="small">Одны аялал</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Sci-Fi</span><span class="tag">Action</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-5.html" class="poster-link"
+                ><img
+                  src="assets/iron-resolve.jpg"
+                  alt="Iron Resolve постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">3.8 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-5.html" class="card-title-link">Iron Resolve</a>
+              </h3>
+              <p class="small">Төмөр зориг</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Action</span><span class="tag">Thriller</span
+                ><span class="small">2023</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="footer">
-      <div class="container footer__inner">
-        <p class="muted">© 2026 MovieRate.mn</p>
+      <div class="page section" id="drama">
+        <div class="title-row">
+          <h2>Drama</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
+        </div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-2.html" class="poster-link"
+                ><img
+                  src="assets/silent-witness.jpg"
+                  alt="Silent Witness постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.2 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-2.html" class="card-title-link"
+                  >Silent Witness</a
+                >
+              </h3>
+              <p class="small">Чимээгүй гэрч</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Thriller</span><span class="tag">Drama</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-4.html" class="poster-link"
+                ><img
+                  src="assets/last-summer-paris.jpg"
+                  alt="Last Summer in Paris постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.3 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-4.html" class="card-title-link"
+                  >Last Summer in Paris</a
+                >
+              </h3>
+              <p class="small">Парис дахь сүүлийн зун</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Romance</span><span class="tag">Drama</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section" id="horror">
+        <div class="title-row">
+          <h2>Horror</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
+        </div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-6.html" class="poster-link"
+                ><img
+                  src="assets/the-hollow.jpg"
+                  alt="The Hollow постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">3.9 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-6.html" class="card-title-link">The Hollow</a>
+              </h3>
+              <p class="small">Хоосон газар</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Horror</span><span class="tag">Thriller</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section" id="comedy">
+        <div class="title-row">
+          <h2>Comedy</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
+        </div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-3.html" class="poster-link"
+                ><img
+                  src="assets/great-escape.jpg"
+                  alt="The Great Escape постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.0 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-3.html" class="card-title-link"
+                  >The Great Escape</a
+                >
+              </h3>
+              <p class="small">Агуу дүрвэлт</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Animation</span><span class="tag">Comedy</span
+                ><span class="small">2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section" id="sci-fi">
+        <div class="title-row">
+          <h2>Sci-Fi</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
+        </div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-1.html" class="poster-link"
+                ><img
+                  src="assets/stellar-odyssey.jpg"
+                  alt="Stellar Odyssey постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.5 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-1.html" class="card-title-link"
+                  >Stellar Odyssey</a
+                >
+              </h3>
+              <p class="small">Одны аялал</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Sci-Fi</span><span class="tag">Action</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section" id="romance">
+        <div class="title-row">
+          <h2>Romance</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
+        </div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-4.html" class="poster-link"
+                ><img
+                  src="assets/last-summer-paris.jpg"
+                  alt="Last Summer in Paris постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.3 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-4.html" class="card-title-link"
+                  >Last Summer in Paris</a
+                >
+              </h3>
+              <p class="small">Парис дахь сүүлийн зун</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Romance</span><span class="tag">Drama</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section" id="thriller">
+        <div class="title-row">
+          <h2>Thriller</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
+        </div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-2.html" class="poster-link"
+                ><img
+                  src="assets/silent-witness.jpg"
+                  alt="Silent Witness постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.2 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-2.html" class="card-title-link"
+                  >Silent Witness</a
+                >
+              </h3>
+              <p class="small">Чимээгүй гэрч</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Thriller</span><span class="tag">Drama</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-5.html" class="poster-link"
+                ><img
+                  src="assets/iron-resolve.jpg"
+                  alt="Iron Resolve постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">3.8 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-5.html" class="card-title-link">Iron Resolve</a>
+              </h3>
+              <p class="small">Төмөр зориг</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Action</span><span class="tag">Thriller</span
+                ><span class="small">2023</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-6.html" class="poster-link"
+                ><img
+                  src="assets/the-hollow.jpg"
+                  alt="The Hollow постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">3.9 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-6.html" class="card-title-link">The Hollow</a>
+              </h3>
+              <p class="small">Хоосон газар</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Horror</span><span class="tag">Thriller</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section" id="animation">
+        <div class="title-row">
+          <h2>Animation</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
+        </div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-3.html" class="poster-link"
+                ><img
+                  src="assets/great-escape.jpg"
+                  alt="The Great Escape постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.0 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-3.html" class="card-title-link"
+                  >The Great Escape</a
+                >
+              </h3>
+              <p class="small">Агуу дүрвэлт</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Animation</span><span class="tag">Comedy</span
+                ><span class="small">2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section" id="y2024">
+        <div class="title-row">
+          <h2>2024 оны кинонууд</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
+        </div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-1.html" class="poster-link"
+                ><img
+                  src="assets/stellar-odyssey.jpg"
+                  alt="Stellar Odyssey постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.5 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-1.html" class="card-title-link"
+                  >Stellar Odyssey</a
+                >
+              </h3>
+              <p class="small">Одны аялал</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Sci-Fi</span><span class="tag">Action</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-2.html" class="poster-link"
+                ><img
+                  src="assets/silent-witness.jpg"
+                  alt="Silent Witness постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.2 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-2.html" class="card-title-link"
+                  >Silent Witness</a
+                >
+              </h3>
+              <p class="small">Чимээгүй гэрч</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Thriller</span><span class="tag">Drama</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-4.html" class="poster-link"
+                ><img
+                  src="assets/last-summer-paris.jpg"
+                  alt="Last Summer in Paris постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.3 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-4.html" class="card-title-link"
+                  >Last Summer in Paris</a
+                >
+              </h3>
+              <p class="small">Парис дахь сүүлийн зун</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Romance</span><span class="tag">Drama</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-6.html" class="poster-link"
+                ><img
+                  src="assets/the-hollow.jpg"
+                  alt="The Hollow постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">3.9 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-6.html" class="card-title-link">The Hollow</a>
+              </h3>
+              <p class="small">Хоосон газар</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Horror</span><span class="tag">Thriller</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section" id="y2023">
+        <div class="title-row">
+          <h2>2023 оны кинонууд</h2>
+          <a href="movies.html" class="mini-button">Дээш</a>
+        </div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-3.html" class="poster-link"
+                ><img
+                  src="assets/great-escape.jpg"
+                  alt="The Great Escape постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.0 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-3.html" class="card-title-link"
+                  >The Great Escape</a
+                >
+              </h3>
+              <p class="small">Агуу дүрвэлт</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Animation</span><span class="tag">Comedy</span
+                ><span class="small">2023</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-5.html" class="poster-link"
+                ><img
+                  src="assets/iron-resolve.jpg"
+                  alt="Iron Resolve постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">3.8 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-5.html" class="card-title-link">Iron Resolve</a>
+              </h3>
+              <p class="small">Төмөр зориг</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Action</span><span class="tag">Thriller</span
+                ><span class="small">2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="page footer-wrap">
+          <div>
+            <div class="brand">
+              <span class="brand-mark"></span>
+              <span class="brand-word">MovieRate</span>
+            </div>
+            <p class="small top-gap">
+              Кино мэдээлэл, үнэлгээ, трейлэрийн холбоос, сэтгэгдэл.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h3>Хуудсууд</h3>
+            <a href="index.html">Нүүр</a>
+            <a href="movies.html">Кино жагсаалт</a>
+            <a href="profile.html">Профайл</a>
+          </div>
+          <div class="footer-links">
+            <h3>Ангилал</h3>
+            <a href="movies.html#action">Action</a>
+            <a href="movies.html#drama">Drama</a>
+            <a href="movies.html#comedy">Comedy</a>
+            <a href="movies.html#horror">Horror</a>
+          </div>
+          <div class="footer-links">
+            <h3>Холбоо барих</h3>
+            <span>info@movierate.mn</span>
+            <span>+976 9999 8888</span>
+          </div>
+        </div>
+        <div class="page copyright">
+          &#169; 2024 MovieRate.mn. Бүх эрх хуулиар хамгаалагдсан.
+        </div>
       </div>
     </div>
   </body>

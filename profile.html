@@ -1,102 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="mn" lang="mn">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta http-equiv="content-language" content="mn" />
-    <title>Профайл - MovieRate.mn</title>
+    <meta
+      http-equiv="Content-Type"
+      content="application/xhtml+xml; charset=utf-8"
+    />
+    <meta http-equiv="Content-Language" content="mn" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Профайл хуудас (демо): түрээс, хадгалсан, тохиргоо."
+      content="Хэрэглэгчийн профайл, хадгалсан кино болон тохиргооны XHTML 1.0 Strict хуудас."
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
-    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
+    <meta
+      name="keywords"
+      content="MovieRate, кино, үнэлгээ, трейлэр, Монгол, MovieRate.mn"
+    />
+    <meta name="robots" content="index,follow" />
+    <title>Профайл - MovieRate.mn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
-
-  <body>
-    <div>
-      <a class="skip-link" href="#main">Үндсэн агуулга руу алгасах</a>
+  <body class="profile">
+    <div class="theme-toggle-wrap">
+      <form action="#" method="get">
+        <div>
+          <input
+            type="checkbox"
+            id="theme-toggle"
+            name="theme-toggle"
+            value="1"
+          />
+        </div>
+      </form>
     </div>
-
-    <div class="topbar">
-      <div class="container topbar__inner">
-        <a class="brand" href="index.html">
-          <span class="brand__wrap">
-            <img
-              class="brand__logo"
-              src="assets/img/logo.svg"
-              alt="MovieRate.mn лого"
-            />
-            <span class="brand__text">MovieRate.mn</span>
-          </span>
-        </a>
-
-        <ul class="nav">
-          <li><a class="nav__link" href="index.html">Нүүр</a></li>
-          <li><a class="nav__link" href="movies.html">Кино</a></li>
-          <li>
-            <a class="nav__link is-active" href="profile.html">Профайл</a>
-          </li>
-          <li><a class="nav__link" href="login.html">Нэвтрэх</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container page">
-      <h1 class="page__title" id="main">Bat-Erdene</h1>
-      <p class="muted">baterdene@example.com</p>
-
-      <div class="media-box">
-        <h2 class="media-title">Миний түрээсэлсэн</h2>
-        <p>
-          <a class="link" href="movie-1.html">Одны аялал</a>,
-          <a class="link" href="movie-4.html">Парис дахь сүүлийн зун</a>
-        </p>
-      </div>
-
-      <div class="media-box">
-        <h2 class="media-title">Хадгалсан</h2>
-        <p class="muted">Favorites: 1, 4</p>
-        <p><a class="link" href="movie-1.html">Одны аялал</a></p>
-        <p><a class="link" href="movie-4.html">Парис дахь сүүлийн зун</a></p>
-      </div>
-
-      <div class="media-box">
-        <h2 class="media-title">Тохиргоо</h2>
-        <form action="profile.html" method="get">
-          <div class="field">
-            <label class="label" for="name">Нэр</label>
-            <input
-              class="input"
-              type="text"
-              id="name"
-              name="name"
-              value="Bat-Erdene"
-            />
+    <div class="site">
+      <div class="topbar">
+        <div class="page topbar-inner">
+          <div class="brand">
+            <span class="brand-mark"></span>
+            <a href="index.html" class="brand-word">MovieRate</a>
           </div>
-
-          <div class="field">
-            <label class="label" for="email">И-мэйл</label>
-            <input
-              class="input"
-              type="text"
-              id="email"
-              name="email"
-              value="baterdene@example.com"
-            />
+          <div class="nav">
+            <a href="index.html">Нүүр</a>
+            <a href="movies.html">Төрлөөр хайх</a>
+            <a href="login.html">Нэвтрэх</a>
+            <a href="profile.html" class="cta">Профайл</a>
+            <label for="theme-toggle" class="theme-switch">Dark / Light</label>
           </div>
-
-          <div class="field">
-            <button class="btn btn--primary" type="submit">Хадгалах</button>
-            <a class="btn btn--ghost" href="index.html">Гарах</a>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
-
-    <div class="footer">
-      <div class="container footer__inner">
-        <p class="muted">© 2026 MovieRate.mn</p>
+      <div class="page section">
+        <div class="profile-box card-pad">
+          <div class="title-row">
+            <div>
+              <div class="kicker">Профайл</div>
+              <h1>Bat-Erdene</h1>
+              <p class="small">baterdene@example.com</p>
+            </div>
+            <div class="badge-row">
+              <span class="badge badge-accent">User</span
+              ><a href="admin.html" class="mini-button">Админ хуудас</a>
+              <a href="index.html" class="mini-button">Гарах</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section">
+        <div class="title-row"><h2>Миний түрээсэлсэн</h2></div>
+        <div class="empty-box">
+          <p>Түрээсэлсэн кино байхгүй.</p>
+          <div class="top-gap">
+            <a href="movies.html" class="button">Кино үзэх</a>
+          </div>
+        </div>
+      </div>
+      <div class="page section">
+        <div class="title-row"><h2>Хадгалсан кино</h2></div>
+        <div class="grid-4">
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-1.html" class="poster-link"
+                ><img
+                  src="assets/stellar-odyssey.jpg"
+                  alt="Stellar Odyssey постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.5 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-1.html" class="card-title-link"
+                  >Stellar Odyssey</a
+                >
+              </h3>
+              <p class="small">Одны аялал</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Sci-Fi</span><span class="tag">Action</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <div class="poster-wrap">
+              <a href="movie-4.html" class="poster-link"
+                ><img
+                  src="assets/last-summer-paris.jpg"
+                  alt="Last Summer in Paris постер"
+                  class="poster-tall"
+                />
+                <span class="rating-chip">4.3 / 5</span>
+                <span class="play-badge">Үзэх</span></a
+              >
+            </div>
+            <div class="card-copy">
+              <h3>
+                <a href="movie-4.html" class="card-title-link"
+                  >Last Summer in Paris</a
+                >
+              </h3>
+              <p class="small">Парис дахь сүүлийн зун</p>
+              <div class="badge-row top-gap">
+                <span class="tag">Romance</span><span class="tag">Drama</span
+                ><span class="small">2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section">
+        <div class="title-row"><h2>Тохиргоо</h2></div>
+        <div class="form-box card-pad" style="max-width: 34rem">
+          <form action="profile.html" method="get">
+            <div class="field">
+              <label for="profile-name">Нэр</label
+              ><input
+                type="text"
+                id="profile-name"
+                name="profile-name"
+                value="Bat-Erdene"
+              />
+            </div>
+            <div class="field">
+              <label for="profile-email">И-мэйл</label
+              ><input
+                type="text"
+                id="profile-email"
+                name="profile-email"
+                value="baterdene@example.com"
+              />
+            </div>
+            <div class="action-row">
+              <input type="submit" value="Хадгалах" class="button" /><a
+                href="admin.html"
+                class="ghost-button"
+                >Админ хэсэг</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="page footer-wrap">
+          <div>
+            <div class="brand">
+              <span class="brand-mark"></span>
+              <span class="brand-word">MovieRate</span>
+            </div>
+            <p class="small top-gap">
+              Кино мэдээлэл, үнэлгээ, трейлэрийн холбоос, сэтгэгдэл.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h3>Хуудсууд</h3>
+            <a href="index.html">Нүүр</a>
+            <a href="movies.html">Кино жагсаалт</a>
+            <a href="profile.html">Профайл</a>
+          </div>
+          <div class="footer-links">
+            <h3>Ангилал</h3>
+            <a href="movies.html#action">Action</a>
+            <a href="movies.html#drama">Drama</a>
+            <a href="movies.html#comedy">Comedy</a>
+            <a href="movies.html#horror">Horror</a>
+          </div>
+          <div class="footer-links">
+            <h3>Холбоо барих</h3>
+            <span>info@movierate.mn</span>
+            <span>+976 9999 8888</span>
+          </div>
+        </div>
+        <div class="page copyright">
+          &#169; 2024 MovieRate.mn. Бүх эрх хуулиар хамгаалагдсан.
+        </div>
       </div>
     </div>
   </body>
