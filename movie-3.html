@@ -1,119 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="mn" lang="mn">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta http-equiv="content-language" content="mn" />
-    <title>The Great Escape - MovieRate.mn</title>
+    <meta
+      http-equiv="Content-Type"
+      content="application/xhtml+xml; charset=utf-8"
+    />
+    <meta http-equiv="Content-Language" content="mn" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Агуу дүрвэлт киноны дэлгэрэнгүй мэдээлэл."
+      content="The Great Escape киноны дэлгэрэнгүй мэдээлэл, сэтгэгдэл, трейлэрийн холбоос."
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
-    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
+    <meta
+      name="keywords"
+      content="MovieRate, кино, үнэлгээ, трейлэр, Монгол, MovieRate.mn"
+    />
+    <meta name="robots" content="index,follow" />
+    <title>The Great Escape - MovieRate.mn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
-
-  <body>
-    <div>
-      <a class="skip-link" href="#main">Үндсэн агуулга руу алгасах</a>
-    </div>
-
-    <div class="topbar">
-      <div class="container topbar__inner">
-        <a class="brand" href="index.html">
-          <span class="brand__wrap">
-            <img
-              class="brand__logo"
-              src="assets/img/logo.svg"
-              alt="MovieRate.mn лого"
-            />
-            <span class="brand__text">MovieRate.mn</span>
-          </span>
-        </a>
-
-        <ul class="nav">
-          <li><a class="nav__link" href="index.html">Нүүр</a></li>
-          <li><a class="nav__link is-active" href="movies.html">Кино</a></li>
-          <li><a class="nav__link" href="profile.html">Профайл</a></li>
-          <li><a class="nav__link" href="login.html">Нэвтрэх</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container page">
-      <p><a class="link" href="movies.html">← Кино жагсаалт</a></p>
-
-      <h1 class="page__title" id="main">Агуу дүрвэлт</h1>
-      <p class="muted">The Great Escape</p>
-
-      <div class="detail">
-        <div class="detail__poster">
-          <img
-            class="poster"
-            src="assets/img/great-escape.jpg"
-            alt="Агуу дүрвэлт киноны постер"
+  <body class="movie">
+    <div class="theme-toggle-wrap">
+      <form action="#" method="get">
+        <div>
+          <input
+            type="checkbox"
+            id="theme-toggle"
+            name="theme-toggle"
+            value="1"
           />
         </div>
-
-        <div class="detail__info">
-          <div class="pills">
-            <span class="pill">2023</span>
-            <span class="pill">Animation</span>
-            <span class="pill">Comedy</span>
-            <span class="pill">Үнэлгээ 4.0</span>
-            <span class="pill">IMDb 7.6</span>
-          </div>
-
-          <dl class="dl">
-            <dt>Хугацаа</dt>
-            <dd>1h 38min</dd>
-            <dt>Найруулагч</dt>
-            <dd>Lisa Park</dd>
-            <dt>Жүжигчид</dt>
-            <dd>Voice: Tom Hardy, Voice: Anya Taylor-Joy, Voice: Idris Elba</dd>
-          </dl>
-
-          <h2 class="media-title">Товч танилцуулга</h2>
-          <p>
-            A ragtag group of zoo animals hatches an elaborate plan to escape
-            and find freedom in the wild. Along the way they discover that home
-            isn't a place, it's the friends you make on the journey.
-          </p>
-
-          <p class="actions">
-            <a class="btn btn--primary" href="login.html">Түрээслэх</a>
-            <a class="btn btn--ghost" href="profile.html">Хадгалах</a>
-          </p>
-
-          <p>
-            <a
-              class="link"
-              href="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              rel="nofollow"
-              >Трейлер</a
-            >
-          </p>
-        </div>
-      </div>
-
-      <div class="media-box">
-        <h2 class="media-title">Сэтгэгдэл</h2>
-
-        <div class="review">
-          <p><strong>Oyunbileg</strong> · 5 · 2023-12-25</p>
-          <p class="muted">My kids absolutely loved it! Funny and heartfelt.</p>
-        </div>
-
-        <div class="review">
-          <p><strong>Munkh</strong> · 3 · 2024-01-05</p>
-          <p class="muted">Entertaining but a bit predictable for adults.</p>
-        </div>
-      </div>
+      </form>
     </div>
+    <div class="site">
+      <div class="topbar">
+        <div class="page topbar-inner">
+          <div class="brand">
+            <span class="brand-mark"></span>
+            <a href="index.html" class="brand-word">MovieRate</a>
+          </div>
+          <div class="nav">
+            <a href="index.html">Нүүр</a>
+            <a href="movies.html">Төрлөөр хайх</a>
+            <a href="login.html">Нэвтрэх</a>
+            <a href="profile.html" class="cta">Профайл</a>
+            <label for="theme-toggle" class="theme-switch">Dark / Light</label>
+          </div>
+        </div>
+      </div>
 
-    <div class="footer">
-      <div class="container footer__inner">
-        <p class="muted">© 2026 MovieRate.mn</p>
+      <div class="page section">
+        <a href="movies.html" class="mini-button">&#8592; Буцах</a>
+      </div>
+      <div class="page section">
+        <div class="movie-layout">
+          <div class="movie-grid">
+            <div>
+              <img
+                src="assets/great-escape.jpg"
+                alt="The Great Escape постер"
+                class="poster-tall"
+              />
+            </div>
+            <div>
+              <div class="kicker">Кино дэлгэрэнгүй</div>
+              <h1>The Great Escape</h1>
+              <p class="lead">Агуу дүрвэлт &#8226; 2023</p>
+              <div class="badge-row top-gap">
+                <span class="badge badge-accent">4.0 / 5</span
+                ><span class="badge">IMDb 7.6</span
+                ><span class="badge">1h 38min</span>
+              </div>
+              <div class="badge-row top-gap">
+                <a class="tag" href="movies.html#animation">Animation</a>
+                <a class="tag" href="movies.html#comedy">Comedy</a>
+              </div>
+              <div class="copy-block top-gap">
+                <p>
+                  A ragtag group of zoo animals hatches an elaborate plan to
+                  escape and find freedom in the wild. Along the way they
+                  discover that home is not a place, it is the friends you make
+                  on the journey.
+                </p>
+              </div>
+              <div class="grid-2-1 top-gap">
+                <div class="panel card-pad">
+                  <div class="kicker">Найруулагч</div>
+                  <h3>Lisa Park</h3>
+                </div>
+                <div class="panel card-pad">
+                  <div class="kicker">Жүжигчид</div>
+                  <p class="small">Tom Hardy, Anya Taylor-Joy, Idris Elba</p>
+                </div>
+              </div>
+              <div class="action-row top-gap">
+                <a
+                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  class="button"
+                  >Трейлэр холбоос</a
+                >
+                <a href="profile.html" class="ghost-button">Хадгалах</a>
+                <a href="profile.html" class="ghost-button"
+                  >Түрээслэх · 4,900₮</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page section">
+        <div class="title-row"><h2>Трейлэр</h2></div>
+        <div class="trailer-box">
+          <p class="small">Трейлэрийг холбоосоор нээнэ.</p>
+          <div class="action-row">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button"
+              >YouTube дээр нээх</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="page section">
+        <div class="title-row"><h2>Сэтгэгдэл (2)</h2></div>
+        <div class="two-col">
+          <div class="review-box card-pad">
+            <h3>Үнэлгээ өгөх</h3>
+            <form action="movie-3.html" method="get">
+              <div class="field">
+                <label for="rating-3">Оноо</label
+                ><select id="rating-3" name="rating-3">
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="comment-3">Сэтгэгдэл</label
+                ><textarea
+                  id="comment-3"
+                  name="comment-3"
+                  rows="6"
+                  cols="30"
+                ></textarea>
+              </div>
+              <div class="action-row">
+                <input type="submit" value="Илгээх" class="button" />
+              </div>
+            </form>
+          </div>
+          <div class="review-list">
+            <div class="review-item">
+              <div class="review-meta">
+                <span class="avatar">OY</span><strong>Oyunbileg</strong
+                ><span class="badge">5 / 5</span
+                ><span class="small">2023-12-25</span>
+              </div>
+              <p class="small top-gap">
+                My kids absolutely loved it! Funny and heartfelt.
+              </p>
+            </div>
+            <div class="review-item">
+              <div class="review-meta">
+                <span class="avatar">MU</span><strong>Munkh</strong
+                ><span class="badge">3 / 5</span
+                ><span class="small">2024-01-05</span>
+              </div>
+              <p class="small top-gap">
+                Entertaining but a bit predictable for adults.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="page footer-wrap">
+          <div>
+            <div class="brand">
+              <span class="brand-mark"></span>
+              <span class="brand-word">MovieRate</span>
+            </div>
+            <p class="small top-gap">
+              Кино мэдээлэл, үнэлгээ, трейлэрийн холбоос, сэтгэгдэл.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h3>Хуудсууд</h3>
+            <a href="index.html">Нүүр</a>
+            <a href="movies.html">Кино жагсаалт</a>
+            <a href="profile.html">Профайл</a>
+          </div>
+          <div class="footer-links">
+            <h3>Ангилал</h3>
+            <a href="movies.html#action">Action</a>
+            <a href="movies.html#drama">Drama</a>
+            <a href="movies.html#comedy">Comedy</a>
+            <a href="movies.html#horror">Horror</a>
+          </div>
+          <div class="footer-links">
+            <h3>Холбоо барих</h3>
+            <span>info@movierate.mn</span>
+            <span>+976 9999 8888</span>
+          </div>
+        </div>
+        <div class="page copyright">
+          &#169; 2024 MovieRate.mn. Бүх эрх хуулиар хамгаалагдсан.
+        </div>
       </div>
     </div>
   </body>
