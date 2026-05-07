@@ -1,0 +1,20 @@
+[
+  {
+    "id": "qpay",
+    "name": "QPay",
+    "desc": "QR кодоор төлөх",
+    "icon": "Smartphone"
+  },
+  {
+    "id": "socialpay",
+    "name": "SocialPay",
+    "desc": "Утасны дугаараар төлөх",
+    "icon": "CreditCard"
+  },
+  {
+    "id": "bank",
+    "name": "Банкны шилжүүлэг",
+    "desc": "Дансны шилжүүлгээр",
+    "icon": "Building2"
+  }
+]

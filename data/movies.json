@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Stellar Odyssey",
+    "subtitle": "Одны аялал",
+    "genres": ["Sci-Fi", "Action"],
+    "year": 2024,
+    "rating": 4.5,
+    "poster": "assets/stellar-odyssey.jpg",
+    "href": "movie-1.html"
+  },
+  {
+    "id": 2,
+    "title": "Silent Witness",
+    "subtitle": "Чимээгүй гэрч",
+    "genres": ["Thriller", "Drama"],
+    "year": 2024,
+    "rating": 4.2,
+    "poster": "assets/silent-witness.jpg",
+    "href": "movie-2.html"
+  },
+  {
+    "id": 3,
+    "title": "The Great Escape",
+    "subtitle": "Агуу дүрвэлт",
+    "genres": ["Animation", "Comedy"],
+    "year": 2023,
+    "rating": 4.0,
+    "poster": "assets/great-escape.jpg",
+    "href": "movie-3.html"
+  },
+  {
+    "id": 4,
+    "title": "Last Summer in Paris",
+    "subtitle": "Парис дахь сүүлийн зун",
+    "genres": ["Romance", "Drama"],
+    "year": 2024,
+    "rating": 4.3,
+    "poster": "assets/last-summer-paris.jpg",
+    "href": "movie-4.html"
+  },
+  {
+    "id": 5,
+    "title": "Iron Resolve",
+    "subtitle": "Төмөр зориг",
+    "genres": ["Action", "Thriller"],
+    "year": 2023,
+    "rating": 3.8,
+    "poster": "assets/iron-resolve.jpg",
+    "href": "movie-5.html"
+  },
+  {
+    "id": 6,
+    "title": "The Hollow",
+    "subtitle": "Хоосон газар",
+    "genres": ["Horror", "Thriller"],
+    "year": 2024,
+    "rating": 3.9,
+    "poster": "assets/the-hollow.jpg",
+    "href": "movie-6.html"
+  }
+]

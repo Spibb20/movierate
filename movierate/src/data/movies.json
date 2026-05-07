@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Stellar Odyssey",
+    "subtitle": "Одны аялал",
+    "genres": ["Sci-Fi", "Action"],
+    "year": 2024,
+    "rating": 4.5,
+    "poster": "/assets/stellar-odyssey.jpg",
+    "trailer": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "avatar": "AB",
+        "name": "Boldbaatar",
+        "rating": 4,
+        "date": "2023-11-15",
+        "comment": "Non-stop action! A great popcorn movie."
+      },
+      {
+        "avatar": "EN",
+        "name": "Enkhtuya",
+        "rating": 3,
+        "date": "2023-12-01",
+        "comment": "Good action sequences but the plot is thin."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Silent Witness",
+    "subtitle": "Чимээгүй гэрч",
+    "genres": ["Thriller", "Drama"],
+    "year": 2024,
+    "rating": 4.2,
+    "poster": "/assets/silent-witness.jpg",
+    "trailer": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "avatar": "TE",
+        "name": "Temuulen",
+        "rating": 4,
+        "date": "2024-02-10",
+        "comment": "Edge-of-your-seat thriller. The plot twists are masterful."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "The Great Escape",
+    "subtitle": "Агуу дүрвэлт",
+    "genres": ["Animation", "Comedy"],
+    "year": 2023,
+    "rating": 4.0,
+    "poster": "/assets/great-escape.jpg",
+    "trailer": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "avatar": "OY",
+        "name": "Oyunbileg",
+        "rating": 5,
+        "date": "2023-12-25",
+        "comment": "My kids absolutely loved it! Funny and heartfelt."
+      },
+      {
+        "avatar": "MU",
+        "name": "Munkh",
+        "rating": 3,
+        "date": "2024-01-05",
+        "comment": "Entertaining but a bit predictable for adults."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Last Summer in Paris",
+    "subtitle": "Парис дахь сүүлийн зун",
+    "genres": ["Romance", "Drama"],
+    "year": 2024,
+    "rating": 4.3,
+    "poster": "/assets/last-summer-paris.jpg",
+    "trailer": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "avatar": "SA",
+        "name": "Sarnai",
+        "rating": 5,
+        "date": "2024-04-01",
+        "comment": "Beautifully shot and emotionally powerful. A modern classic."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Iron Resolve",
+    "subtitle": "Төмөр зориг",
+    "genres": ["Action", "Thriller"],
+    "year": 2023,
+    "rating": 3.8,
+    "poster": "/assets/iron-resolve.jpg",
+    "trailer": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "reviews": []
+  },
+  {
+    "id": 6,
+    "title": "The Hollow",
+    "subtitle": "Хоосон газар",
+    "genres": ["Horror", "Thriller"],
+    "year": 2024,
+    "rating": 3.9,
+    "poster": "/assets/the-hollow.jpg",
+    "trailer": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "avatar": "GA",
+        "name": "Ganzorig",
+        "rating": 4,
+        "date": "2024-01-20",
+        "comment": "Genuinely terrifying. I could not sleep for days."
+      }
+    ]
+  }
+]

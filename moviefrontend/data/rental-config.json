@@ -1,0 +1,9 @@
+{
+  "durationDays": 3,
+  "priceLabel": "4,900₮",
+  "bank": {
+    "name": "Хаан банк",
+    "account": "5089 1234 5678",
+    "receiver": "MovieRate ХХК"
+  }
+}

@@ -1,0 +1,218 @@
+[
+  {
+    "id": "1",
+    "title": "Stellar Odyssey",
+    "titleMn": "Одны аялал",
+    "year": 2024,
+    "genre": [
+      "Sci-Fi",
+      "Action"
+    ],
+    "rating": 4.5,
+    "imdb": 8.7,
+    "duration": "2h 28min",
+    "director": "James Nolan",
+    "cast": [
+      "Sarah Mitchell",
+      "David Chen",
+      "Elena Voss"
+    ],
+    "synopsis": "A lone astronaut embarks on a perilous journey to a distant planet after Earth receives a mysterious signal from deep space. As she navigates the dangers of interstellar travel, she discovers that the signal holds the key to humanity's survival — and a truth that will change everything we know about the universe.",
+    "poster": "/movies/stellar-odyssey.jpg",
+    "trailer": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "id": "r1",
+        "user": "Bat-Erdene",
+        "avatar": "BE",
+        "rating": 5,
+        "comment": "Incredible visuals and a deeply moving story. Best sci-fi film of the year!",
+        "date": "2024-03-15"
+      },
+      {
+        "id": "r2",
+        "user": "Solongo",
+        "avatar": "SO",
+        "rating": 4,
+        "comment": "Great pacing and performances. The ending left me wanting more.",
+        "date": "2024-03-20"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Silent Witness",
+    "titleMn": "Чимээгүй гэрч",
+    "year": 2024,
+    "genre": [
+      "Thriller",
+      "Drama"
+    ],
+    "rating": 4.2,
+    "imdb": 8.1,
+    "duration": "1h 55min",
+    "director": "Park Min-ho",
+    "cast": [
+      "Lee Joon-gi",
+      "Anna Petrova",
+      "Marcus Reed"
+    ],
+    "synopsis": "When a journalist witnesses a crime that powerful people want buried, she must navigate a web of deception and danger to expose the truth. With no one to trust and time running out, every shadow hides a threat.",
+    "poster": "/movies/silent-witness.jpg",
+    "trailer": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "id": "r3",
+        "user": "Temuulen",
+        "avatar": "TE",
+        "rating": 4,
+        "comment": "Edge-of-your-seat thriller. The plot twists are masterful.",
+        "date": "2024-02-10"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "The Great Escape",
+    "titleMn": "Агуу дүрвэлт",
+    "year": 2023,
+    "genre": [
+      "Animation",
+      "Comedy"
+    ],
+    "rating": 4,
+    "imdb": 7.6,
+    "duration": "1h 38min",
+    "director": "Lisa Park",
+    "cast": [
+      "Voice: Tom Hardy",
+      "Voice: Anya Taylor-Joy",
+      "Voice: Idris Elba"
+    ],
+    "synopsis": "A ragtag group of zoo animals hatches an elaborate plan to escape and find freedom in the wild. Along the way they discover that home isn't a place — it's the friends you make on the journey.",
+    "poster": "/movies/great-escape.jpg",
+    "trailer": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "id": "r4",
+        "user": "Oyunbileg",
+        "avatar": "OY",
+        "rating": 5,
+        "comment": "My kids absolutely loved it! Funny and heartfelt.",
+        "date": "2023-12-25"
+      },
+      {
+        "id": "r5",
+        "user": "Munkh",
+        "avatar": "MU",
+        "rating": 3,
+        "comment": "Entertaining but a bit predictable for adults.",
+        "date": "2024-01-05"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Last Summer in Paris",
+    "titleMn": "Парис дахь сүүлийн зун",
+    "year": 2024,
+    "genre": [
+      "Romance",
+      "Drama"
+    ],
+    "rating": 4.3,
+    "imdb": 8,
+    "duration": "2h 05min",
+    "director": "Claire Dumont",
+    "cast": [
+      "Amara Okafor",
+      "Jean-Luc Picard",
+      "Sofia Morales"
+    ],
+    "synopsis": "Two strangers meet by chance in Paris and spend an unforgettable summer together. As autumn approaches, they must decide if their love is strong enough to survive the distance that threatens to pull them apart.",
+    "poster": "/movies/last-summer-paris.jpg",
+    "trailer": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "id": "r6",
+        "user": "Sarnai",
+        "avatar": "SA",
+        "rating": 5,
+        "comment": "Beautifully shot and emotionally powerful. A modern classic.",
+        "date": "2024-04-01"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Iron Resolve",
+    "titleMn": "Төмөр зориг",
+    "year": 2023,
+    "genre": [
+      "Action",
+      "Thriller"
+    ],
+    "rating": 3.8,
+    "imdb": 7.2,
+    "duration": "2h 15min",
+    "director": "Ravi Kapoor",
+    "cast": [
+      "Chris Pratt",
+      "Gal Gadot",
+      "Jason Momoa"
+    ],
+    "synopsis": "A retired special forces operative is pulled back into action when a shadowy organization threatens global security. Armed with nothing but skill and determination, she must stop them before it's too late.",
+    "poster": "/movies/iron-resolve.jpg",
+    "trailer": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "id": "r7",
+        "user": "Boldbaatar",
+        "avatar": "BO",
+        "rating": 4,
+        "comment": "Non-stop action! A great popcorn movie.",
+        "date": "2023-11-15"
+      },
+      {
+        "id": "r8",
+        "user": "Enkhtuya",
+        "avatar": "EN",
+        "rating": 3,
+        "comment": "Good action sequences but the plot is thin.",
+        "date": "2023-12-01"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "title": "The Hollow",
+    "titleMn": "Хоосон газар",
+    "year": 2024,
+    "genre": [
+      "Horror",
+      "Thriller"
+    ],
+    "rating": 3.9,
+    "imdb": 7.5,
+    "duration": "1h 48min",
+    "director": "Jordan Peele",
+    "cast": [
+      "Lupita Nyong'o",
+      "Daniel Kaluuya",
+      "Florence Pugh"
+    ],
+    "synopsis": "A family moves into an old farmhouse only to discover it holds dark secrets. As strange occurrences escalate, they realize the house itself is alive — and it doesn't want them to leave.",
+    "poster": "/movies/the-hollow.jpg",
+    "trailer": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "reviews": [
+      {
+        "id": "r9",
+        "user": "Ganzorig",
+        "avatar": "GA",
+        "rating": 4,
+        "comment": "Genuinely terrifying. I couldn't sleep for days.",
+        "date": "2024-01-20"
+      }
+    ]
+  }
+]

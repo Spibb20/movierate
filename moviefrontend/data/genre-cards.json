@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Action",
+    "label": "Action",
+    "icon": "Sword"
+  },
+  {
+    "name": "Drama",
+    "label": "Drama",
+    "icon": "Drama"
+  },
+  {
+    "name": "Horror",
+    "label": "Horror",
+    "icon": "Ghost"
+  },
+  {
+    "name": "Comedy",
+    "label": "Comedy",
+    "icon": "Laugh"
+  },
+  {
+    "name": "Sci-Fi",
+    "label": "Sci-Fi",
+    "icon": "Rocket"
+  },
+  {
+    "name": "Romance",
+    "label": "Romance",
+    "icon": "Heart"
+  },
+  {
+    "name": "Thriller",
+    "label": "Thriller",
+    "icon": "ShieldAlert"
+  },
+  {
+    "name": "Animation",
+    "label": "Animation",
+    "icon": "Clapperboard"
+  }
+]
