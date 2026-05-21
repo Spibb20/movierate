@@ -54,3 +54,42 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .responsive-page {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .responsive-page {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-page {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}

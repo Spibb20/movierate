@@ -1,16 +1,12 @@
 const crypto = require("crypto");
-const bcrypt = require("bcryptjs");
 
 function getSecret() {
-  const secret = process.env.AUTH_SECRET;
+  const secret =
+    process.env.AUTH_SECRET || "dev-only-change-this-secret-32chars-minimum";
   if (!secret || secret.length < 32) {
     throw new Error("AUTH_SECRET must be at least 32 characters long");
   }
   return secret;
-}
-
-function pepperPassword(password) {
-  return `${password}${getSecret()}`;
 }
 
 function validatePassword(password) {
@@ -23,12 +19,26 @@ function validatePassword(password) {
   return errors;
 }
 
-async function hashPassword(password) {
-  return bcrypt.hash(pepperPassword(password), 12);
+function createPasswordSalt() {
+  return crypto.randomBytes(16).toString("hex");
 }
 
-async function verifyPassword(password, hash) {
-  return bcrypt.compare(pepperPassword(password), hash);
+function hashPasswordWithSalt(password, salt) {
+  return crypto
+    .pbkdf2Sync(`${password}${getSecret()}`, salt, 120000, 64, "sha512")
+    .toString("hex");
+}
+
+async function hashPassword(password, salt = createPasswordSalt()) {
+  return { salt, hash: hashPasswordWithSalt(password, salt) };
+}
+
+async function verifyPassword(password, salt, expectedHash) {
+  const actualHash = hashPasswordWithSalt(password, salt);
+  return crypto.timingSafeEqual(
+    Buffer.from(actualHash, "hex"),
+    Buffer.from(expectedHash, "hex")
+  );
 }
 
 function createRawSessionToken() {
@@ -41,6 +51,7 @@ function hashSessionToken(token) {
 
 module.exports = {
   validatePassword,
+  createPasswordSalt,
   hashPassword,
   verifyPassword,
   createRawSessionToken,

@@ -1,7 +1,8 @@
 import localMovies from "@/data/movies.json";
 import localGenres from "@/data/genres.json";
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+export const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 export type Review = {
   id: string;
@@ -35,6 +36,7 @@ export type User = {
   email: string;
   role: "user" | "admin";
   favorites: string[];
+  avatar?: string;
 };
 
 export type Rental = {
@@ -51,7 +53,11 @@ export type PaginatedMovies = {
   totalPages: number;
 };
 
-async function safeFetch<T>(url: string, fallback: T, init?: RequestInit): Promise<T> {
+async function safeFetch<T>(
+  url: string,
+  fallback: T,
+  init?: RequestInit
+): Promise<T> {
   try {
     const res = await fetch(url, { cache: "no-store", ...init });
     if (!res.ok) return fallback;
@@ -73,8 +79,16 @@ async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 function moviesFallback(limit?: number): PaginatedMovies {
-  const items = limit ? (localMovies as Movie[]).slice(0, limit) : (localMovies as Movie[]);
-  return { items, total: items.length, page: 1, limit: limit || items.length, totalPages: 1 };
+  const items = limit
+    ? (localMovies as Movie[]).slice(0, limit)
+    : (localMovies as Movie[]);
+  return {
+    items,
+    total: items.length,
+    page: 1,
+    limit: limit || items.length,
+    totalPages: 1,
+  };
 }
 
 export async function getMovies(params?: {
@@ -89,57 +103,102 @@ export async function getMovies(params?: {
   Object.entries(params || {}).forEach(([key, value]) => {
     if (value !== undefined && value !== "") query.set(key, String(value));
   });
-  return safeFetch<PaginatedMovies>(`${API_BASE_URL}/api/movies?${query.toString()}`, moviesFallback(Number(params?.limit) || undefined));
+  return safeFetch<PaginatedMovies>(
+    `${API_BASE_URL}/api/movies?${query.toString()}`,
+    moviesFallback(Number(params?.limit) || undefined)
+  );
 }
 
-export async function getMovieList(params?: Parameters<typeof getMovies>[0]): Promise<Movie[]> {
+export async function getMovieList(
+  params?: Parameters<typeof getMovies>[0]
+): Promise<Movie[]> {
   const result = await getMovies(params);
   return result.items;
 }
 
 export async function getMovieById(id: string): Promise<Movie | undefined> {
   const fallback = (localMovies as Movie[]).find((m) => m.id === id);
-  return safeFetch<Movie | undefined>(`${API_BASE_URL}/api/movies/${id}`, fallback);
+  return safeFetch<Movie | undefined>(
+    `${API_BASE_URL}/api/movies/${id}`,
+    fallback
+  );
 }
 
 export async function getGenres(): Promise<readonly string[]> {
-  return safeFetch<readonly string[]>(`${API_BASE_URL}/api/genres`, localGenres as readonly string[]);
+  return safeFetch<readonly string[]>(
+    `${API_BASE_URL}/api/genres`,
+    localGenres as readonly string[]
+  );
 }
 
 export async function getTopRated(limit = 4): Promise<Movie[]> {
-  const fallback = [...(localMovies as Movie[])].sort((a, b) => b.rating - a.rating).slice(0, limit);
-  const result = await safeFetch<PaginatedMovies>(`${API_BASE_URL}/api/movies?sort=rating&limit=${limit}`, {
-    items: fallback,
-    total: fallback.length,
-    page: 1,
-    limit,
-    totalPages: 1,
-  });
+  const fallback = [...(localMovies as Movie[])]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, limit);
+  const result = await safeFetch<PaginatedMovies>(
+    `${API_BASE_URL}/api/movies?sort=rating&limit=${limit}`,
+    {
+      items: fallback,
+      total: fallback.length,
+      page: 1,
+      limit,
+      totalPages: 1,
+    }
+  );
   return result.items;
 }
 
 export const authApi = {
   signup: (body: { name: string; email: string; password: string }) =>
-    apiRequest<User>("/api/auth/signup", { method: "POST", body: JSON.stringify(body) }),
+    apiRequest<User>("/api/auth/signup", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
   login: (body: { email: string; password: string }) =>
-    apiRequest<User>("/api/auth/login", { method: "POST", body: JSON.stringify(body) }),
-  logout: () => apiRequest<{ ok: true }>("/api/auth/logout", { method: "POST" }),
+    apiRequest<User>("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+  logout: () =>
+    apiRequest<{ ok: true }>("/api/auth/logout", { method: "POST" }),
   me: () => apiRequest<User>("/api/auth/me"),
+  updateMe: (body: { name?: string; avatar?: string }) =>
+    apiRequest<User>("/api/users/me", {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
 };
 
 export const rentalApi = {
   list: () => apiRequest<Rental[]>("/api/rentals"),
-  create: (movieId: string) => apiRequest<Rental>("/api/rentals", { method: "POST", body: JSON.stringify({ movieId }) }),
-  remove: (movieId: string) => apiRequest<{ ok: true }>(`/api/rentals/${movieId}`, { method: "DELETE" }),
+  create: (movieId: string) =>
+    apiRequest<Rental>("/api/rentals", {
+      method: "POST",
+      body: JSON.stringify({ movieId }),
+    }),
+  remove: (movieId: string) =>
+    apiRequest<{ ok: true }>(`/api/rentals/${movieId}`, { method: "DELETE" }),
 };
 
 export const reviewApi = {
   create: (movieId: string, body: { rating: number; comment: string }) =>
-    apiRequest<Review>(`/api/movies/${movieId}/reviews`, { method: "POST", body: JSON.stringify(body) }),
+    apiRequest<Review>(`/api/movies/${movieId}/reviews`, {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
 };
 
 export const movieApi = {
-  create: (body: Partial<Movie>) => apiRequest<Movie>("/api/movies", { method: "POST", body: JSON.stringify(body) }),
-  update: (id: string, body: Partial<Movie>) => apiRequest<Movie>(`/api/movies/${id}`, { method: "PUT", body: JSON.stringify(body) }),
-  remove: (id: string) => apiRequest<{ ok: true }>(`/api/movies/${id}`, { method: "DELETE" }),
+  create: (body: Partial<Movie>) =>
+    apiRequest<Movie>("/api/movies", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+  update: (id: string, body: Partial<Movie>) =>
+    apiRequest<Movie>(`/api/movies/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
+  remove: (id: string) =>
+    apiRequest<{ ok: true }>(`/api/movies/${id}`, { method: "DELETE" }),
 };

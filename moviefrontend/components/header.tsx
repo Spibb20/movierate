@@ -7,6 +7,7 @@ import { Film, Menu, X, User, LogIn, Search, Grid3X3 } from "lucide-react";
 import navLinksData from "@/data/nav-links.json";
 import { Button } from "@/components/ui/button";
 import { movies } from "@/lib/data";
+import { authApi, type User as AuthUser } from "@/lib/api";
 
 const navIconMap = { Grid3X3 } as const;
 
@@ -24,8 +25,34 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<typeof movies>([]);
+  const [authUser, setAuthUser] = useState<AuthUser | null>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    async function loadAuth() {
+      try {
+        const me = await authApi.me();
+        if (mounted) setAuthUser(me);
+      } catch {
+        if (mounted) setAuthUser(null);
+      }
+    }
+    loadAuth();
+    window.addEventListener("auth-changed", loadAuth);
+    return () => {
+      mounted = false;
+      window.removeEventListener("auth-changed", loadAuth);
+    };
+  }, []);
+
+  async function handleLogout() {
+    await authApi.logout().catch(() => null);
+    setAuthUser(null);
+    window.dispatchEvent(new Event("auth-changed"));
+    router.push("/login");
+  }
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -102,6 +129,7 @@ export function Header() {
               ref={inputRef}
               type="text"
               placeholder="Кино хайх..."
+              aria-label="Кино хайх"
               value={searchQuery}
               onFocus={() => setSearchOpen(true)}
               onChange={(e) => {
@@ -122,7 +150,7 @@ export function Header() {
                   <div className="h-10 w-7 shrink-0 overflow-hidden rounded bg-muted">
                     <img
                       src={movie.poster}
-                      alt=""
+                      alt={`${movie.title} poster`}
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -149,26 +177,48 @@ export function Header() {
             )}
         </div>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <Link href="/login">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="gap-1.5 text-sm text-muted-foreground hover:text-foreground"
-            >
-              <LogIn className="h-3.5 w-3.5" />
-              Нэвтрэх
-            </Button>
-          </Link>
-          <Link href="/profile">
-            <Button
-              size="sm"
-              className="gap-1.5 bg-accent text-accent-foreground hover:bg-accent/90"
-            >
-              <User className="h-3.5 w-3.5" />
-              Профайл
-            </Button>
-          </Link>
+        <div className="hidden items-center gap-2 md:flex" aria-live="polite">
+          {authUser ? (
+            <>
+              <Link href="/profile">
+                <Button
+                  size="sm"
+                  className="gap-1.5 bg-accent text-accent-foreground hover:bg-accent/90"
+                >
+                  {authUser.avatar ? (
+                    <img
+                      src={authUser.avatar}
+                      alt={`${authUser.name} profile`}
+                      className="h-5 w-5 rounded-full object-cover"
+                    />
+                  ) : (
+                    <User className="h-3.5 w-3.5" />
+                  )}
+                  Профайл
+                </Button>
+              </Link>
+              <Button
+                type="button"
+                onClick={handleLogout}
+                variant="ghost"
+                size="sm"
+                className="gap-1.5 text-sm text-muted-foreground hover:text-foreground"
+              >
+                Гарах
+              </Button>
+            </>
+          ) : (
+            <Link href="/login">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-1.5 text-sm text-muted-foreground hover:text-foreground"
+              >
+                <LogIn className="h-3.5 w-3.5" />
+                Нэвтрэх
+              </Button>
+            </Link>
+          )}
         </div>
 
         <div className="flex flex-1 items-center justify-end gap-2 md:hidden">
@@ -206,6 +256,7 @@ export function Header() {
             <input
               type="text"
               placeholder="Кино хайх..."
+              aria-label="Кино хайх"
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               autoFocus
@@ -226,7 +277,7 @@ export function Header() {
                   <div className="h-9 w-6 shrink-0 overflow-hidden rounded bg-muted">
                     <img
                       src={movie.poster}
-                      alt=""
+                      alt={`${movie.title} poster`}
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -261,26 +312,46 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <div className="mt-2 flex flex-col gap-2 border-t border-border pt-3">
-              <Link href="/login" onClick={() => setMobileOpen(false)}>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full justify-start gap-1.5"
-                >
-                  <LogIn className="h-3.5 w-3.5" />
-                  Нэвтрэх
-                </Button>
-              </Link>
-              <Link href="/profile" onClick={() => setMobileOpen(false)}>
-                <Button
-                  size="sm"
-                  className="w-full justify-start gap-1.5 bg-accent text-accent-foreground hover:bg-accent/90"
-                >
-                  <User className="h-3.5 w-3.5" />
-                  Профайл
-                </Button>
-              </Link>
+            <div
+              className="mt-2 flex flex-col gap-2 border-t border-border pt-3"
+              aria-live="polite"
+            >
+              {authUser ? (
+                <>
+                  <Link href="/profile" onClick={() => setMobileOpen(false)}>
+                    <Button
+                      size="sm"
+                      className="w-full justify-start gap-1.5 bg-accent text-accent-foreground hover:bg-accent/90"
+                    >
+                      <User className="h-3.5 w-3.5" />
+                      Профайл
+                    </Button>
+                  </Link>
+                  <Button
+                    type="button"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      handleLogout();
+                    }}
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start gap-1.5"
+                  >
+                    Гарах
+                  </Button>
+                </>
+              ) : (
+                <Link href="/login" onClick={() => setMobileOpen(false)}>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start gap-1.5"
+                  >
+                    <LogIn className="h-3.5 w-3.5" />
+                    Нэвтрэх
+                  </Button>
+                </Link>
+              )}
             </div>
           </nav>
         </div>

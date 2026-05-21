@@ -25,7 +25,7 @@ const SESSION_DAYS = Number(process.env.SESSION_DAYS || 7);
 const isProduction = process.env.NODE_ENV === "production";
 
 app.use(cors({ origin: CLIENT_URL, credentials: true }));
-app.use(express.json());
+app.use(express.json({ limit: "2mb" }));
 app.use(cookieParser());
 
 const loginLimiter = rateLimit({
@@ -33,7 +33,7 @@ const loginLimiter = rateLimit({
   limit: 10,
   standardHeaders: true,
   legacyHeaders: false,
-  message: { message: "Хэт олон нэвтрэх оролдлого хийлээ. Түр хүлээгээд дахин оролдоно уу." },
+  message: { message: "Het olon oroldlogo hiilee, try again later." },
 });
 
 function publicUser(user) {
@@ -43,6 +43,7 @@ function publicUser(user) {
     email: user.email,
     role: user.role,
     favorites: user.favorites || [],
+    avatar: user.avatar || "",
   };
 }
 
@@ -57,7 +58,12 @@ function setSessionCookie(res, rawToken, expiresAt) {
 }
 
 function clearSessionCookie(res) {
-  res.clearCookie("session", { httpOnly: true, sameSite: "lax", secure: isProduction, path: "/" });
+  res.clearCookie("session", {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: isProduction,
+    path: "/",
+  });
 }
 
 app.get("/api/health", (_req, res) => {
@@ -68,23 +74,31 @@ app.post("/api/auth/signup", async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
-      return res.status(400).json({ message: "name, email, password шаардлагатай" });
+      return res
+        .status(400)
+        .json({ message: "name, email, password шаардлагатай" });
     }
 
     const passwordErrors = validatePassword(String(password));
     if (passwordErrors.length > 0) {
-      return res.status(400).json({ message: `Нууц үгэнд ${passwordErrors.join(", ")} шаардлагатай` });
+      return res.status(400).json({
+        message: `Нууц үгэнд ${passwordErrors.join(", ")} шаардлагатай`,
+      });
     }
 
     const exists = await User.findOne({ email: String(email).toLowerCase() });
-    if (exists) return res.status(409).json({ message: "Энэ и-мэйл бүртгэлтэй байна" });
+    if (exists)
+      return res.status(409).json({ message: "Энэ и-мэйл бүртгэлтэй байна" });
 
+    const passwordRecord = await hashPassword(String(password));
     const user = await User.create({
       name: String(name).trim(),
       email: String(email).toLowerCase().trim(),
-      passwordHash: await hashPassword(String(password)),
+      passwordHash: passwordRecord.hash,
+      passwordSalt: passwordRecord.salt,
       role: "user",
       favorites: [],
+      avatar: "",
     });
 
     res.status(201).json(publicUser(user));
@@ -96,13 +110,25 @@ app.post("/api/auth/signup", async (req, res, next) => {
 app.post("/api/auth/login", loginLimiter, async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    if (!email || !password) return res.status(400).json({ message: "email болон password шаардлагатай" });
+    if (!email || !password)
+      return res
+        .status(400)
+        .json({ message: "email болон password шаардлагатай" });
 
     const user = await User.findOne({ email: String(email).toLowerCase() });
     const locked = user?.lockUntil && user.lockUntil.getTime() > Date.now();
-    if (locked) return res.status(423).json({ message: "Нэвтрэх эрх түр түгжигдсэн. Дараа дахин оролдоно уу." });
+    if (locked)
+      return res.status(423).json({
+        message: "Нэвтрэх эрх түр түгжигдсэн. Дараа дахин оролдоно уу.",
+      });
 
-    const valid = user ? await verifyPassword(String(password), user.passwordHash) : false;
+    const valid = user
+      ? await verifyPassword(
+          String(password),
+          user.passwordSalt,
+          user.passwordHash
+        )
+      : false;
     if (!valid) {
       if (user) {
         user.failedLoginAttempts += 1;
@@ -121,7 +147,11 @@ app.post("/api/auth/login", loginLimiter, async (req, res, next) => {
 
     const rawToken = createRawSessionToken();
     const expiresAt = new Date(Date.now() + SESSION_DAYS * 24 * 60 * 60 * 1000);
-    await Session.create({ user: user._id, tokenHash: hashSessionToken(rawToken), expiresAt });
+    await Session.create({
+      user: user._id,
+      tokenHash: hashSessionToken(rawToken),
+      expiresAt,
+    });
     setSessionCookie(res, rawToken, expiresAt);
 
     res.json(publicUser(user));
@@ -144,14 +174,63 @@ app.get("/api/auth/me", requireAuth, (req, res) => {
   res.json(publicUser(req.user));
 });
 
+app.put("/api/users/me", requireAuth, async (req, res, next) => {
+  try {
+    const { name, avatar } = req.body;
+
+    if (typeof name === "string") {
+      const cleanName = name.trim();
+      if (cleanName.length < 2) {
+        return res
+          .status(400)
+          .json({ message: "Нэр хамгийн багадаа 2 тэмдэгт байна" });
+      }
+      req.user.name = cleanName;
+    }
+
+    if (typeof avatar === "string") {
+      const validAvatar =
+        avatar === "" ||
+        /^data:image\/(png|jpeg|jpg|webp|gif);base64,[A-Za-z0-9+/=]+$/.test(
+          avatar
+        );
+
+      if (!validAvatar) {
+        return res.status(400).json({ message: "Зургийн формат буруу байна" });
+      }
+
+      if (avatar.length > 750000) {
+        return res.status(413).json({ message: "Зураг хэт том байна" });
+      }
+
+      req.user.avatar = avatar;
+    }
+
+    await req.user.save();
+    res.json(publicUser(req.user));
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.get("/api/movies", async (req, res, next) => {
   try {
-    const { genre, year, q, sort = "createdAt", page = 1, limit = 12 } = req.query;
+    const {
+      genre,
+      year,
+      q,
+      sort = "createdAt",
+      page = 1,
+      limit = 12,
+    } = req.query;
     const filter = {};
     if (genre) filter.genre = String(genre);
     if (year) filter.year = Number(year);
     if (q) {
-      const regex = new RegExp(String(q).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
+      const regex = new RegExp(
+        String(q).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+        "i"
+      );
       filter.$or = [{ title: regex }, { titleMn: regex }, { director: regex }];
     }
 
@@ -166,7 +245,11 @@ app.get("/api/movies", async (req, res, next) => {
     };
 
     const [items, total] = await Promise.all([
-      Movie.find(filter).sort(sortMap[sort] || sortMap.createdAt).skip(skip).limit(limitNumber).lean(),
+      Movie.find(filter)
+        .sort(sortMap[sort] || sortMap.createdAt)
+        .skip(skip)
+        .limit(limitNumber)
+        .lean(),
       Movie.countDocuments(filter),
     ]);
 
@@ -205,8 +288,13 @@ app.put("/api/movies/:id", requireAuth, async (req, res, next) => {
   try {
     const movie = await Movie.findOne({ id: req.params.id });
     if (!movie) return res.status(404).json({ message: "Кино олдсонгүй" });
-    if (req.user.role !== "admin" && String(movie.owner) !== String(req.user._id)) {
-      return res.status(403).json({ message: "Өөр хэрэглэгчийн киног засах эрхгүй" });
+    if (
+      req.user.role !== "admin" &&
+      String(movie.owner) !== String(req.user._id)
+    ) {
+      return res
+        .status(403)
+        .json({ message: "Өөр хэрэглэгчийн киног засах эрхгүй" });
     }
     Object.assign(movie, req.body, { id: movie.id, owner: movie.owner });
     await movie.save();
@@ -220,8 +308,13 @@ app.delete("/api/movies/:id", requireAuth, async (req, res, next) => {
   try {
     const movie = await Movie.findOne({ id: req.params.id });
     if (!movie) return res.status(404).json({ message: "Кино олдсонгүй" });
-    if (req.user.role !== "admin" && String(movie.owner) !== String(req.user._id)) {
-      return res.status(403).json({ message: "Өөр хэрэглэгчийн киног устгах эрхгүй" });
+    if (
+      req.user.role !== "admin" &&
+      String(movie.owner) !== String(req.user._id)
+    ) {
+      return res
+        .status(403)
+        .json({ message: "Өөр хэрэглэгчийн киног устгах эрхгүй" });
     }
     await movie.deleteOne();
     res.json({ ok: true });
@@ -233,7 +326,10 @@ app.delete("/api/movies/:id", requireAuth, async (req, res, next) => {
 app.post("/api/movies/:id/reviews", requireAuth, async (req, res, next) => {
   try {
     const { rating, comment } = req.body;
-    if (!rating || !comment) return res.status(400).json({ message: "rating болон comment шаардлагатай" });
+    if (!rating || !comment)
+      return res
+        .status(400)
+        .json({ message: "rating болон comment шаардлагатай" });
     const movie = await Movie.findOne({ id: req.params.id });
     if (!movie) return res.status(404).json({ message: "Кино олдсонгүй" });
     const review = {
@@ -262,13 +358,30 @@ app.get("/api/genres", async (_req, res, next) => {
 });
 
 app.get("/api/rental-config", (_req, res) => {
-  res.json({ durationDays: 3, priceLabel: "₮4,900", bank: { name: "Хаан банк", account: "5000000000", receiver: "MovieRate LLC" } });
+  res.json({
+    durationDays: 3,
+    priceLabel: "₮4,900",
+    bank: {
+      name: "Хаан банк",
+      account: "5000000000",
+      receiver: "MovieRate LLC",
+    },
+  });
 });
 
 app.get("/api/rentals", requireAuth, async (req, res, next) => {
   try {
-    const rentals = await Rental.find({ user: req.user._id, expiresAt: { $gt: Date.now() } }).lean();
-    res.json(rentals.map((r) => ({ movieId: r.movieId, rentedAt: r.rentedAt, expiresAt: r.expiresAt })));
+    const rentals = await Rental.find({
+      user: req.user._id,
+      expiresAt: { $gt: Date.now() },
+    }).lean();
+    res.json(
+      rentals.map((r) => ({
+        movieId: r.movieId,
+        rentedAt: r.rentedAt,
+        expiresAt: r.expiresAt,
+      }))
+    );
   } catch (error) {
     next(error);
   }
@@ -277,7 +390,8 @@ app.get("/api/rentals", requireAuth, async (req, res, next) => {
 app.post("/api/rentals", requireAuth, async (req, res, next) => {
   try {
     const { movieId } = req.body;
-    if (!movieId) return res.status(400).json({ message: "movieId шаардлагатай" });
+    if (!movieId)
+      return res.status(400).json({ message: "movieId шаардлагатай" });
     const movie = await Movie.findOne({ id: movieId });
     if (!movie) return res.status(404).json({ message: "Кино олдсонгүй" });
 
@@ -285,10 +399,19 @@ app.post("/api/rentals", requireAuth, async (req, res, next) => {
     const durationMs = 3 * 24 * 60 * 60 * 1000;
     const rental = await Rental.findOneAndUpdate(
       { user: req.user._id, movieId },
-      { user: req.user._id, movieId, rentedAt: now, expiresAt: now + durationMs },
+      {
+        user: req.user._id,
+        movieId,
+        rentedAt: now,
+        expiresAt: now + durationMs,
+      },
       { upsert: true, new: true, setDefaultsOnInsert: true }
     );
-    res.status(201).json({ movieId: rental.movieId, rentedAt: rental.rentedAt, expiresAt: rental.expiresAt });
+    res.status(201).json({
+      movieId: rental.movieId,
+      rentedAt: rental.rentedAt,
+      expiresAt: rental.expiresAt,
+    });
   } catch (error) {
     next(error);
   }
@@ -303,24 +426,40 @@ app.delete("/api/rentals/:movieId", requireAuth, async (req, res, next) => {
   }
 });
 
-app.get("/api/admin/users", requireAuth, requireRole("admin"), async (_req, res, next) => {
-  try {
-    const users = await User.find().select("name email role favorites createdAt").lean();
-    res.json(users);
-  } catch (error) {
-    next(error);
+app.get(
+  "/api/admin/users",
+  requireAuth,
+  requireRole("admin"),
+  async (_req, res, next) => {
+    try {
+      const users = await User.find()
+        .select("name email role favorites createdAt")
+        .lean();
+      res.json(users);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 app.use((err, _req, res, _next) => {
   console.error(err);
-  if (err.code === 11000) return res.status(409).json({ message: "Давхардсан өгөгдөл байна" });
+  if (err.code === 11000)
+    return res.status(409).json({ message: "Давхардсан өгөгдөл байна" });
   res.status(500).json({ message: "Серверийн алдаа" });
 });
 
-connectDb()
-  .then(() => app.listen(PORT, () => console.log(`Express API: http://localhost:${PORT}`)))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+if (process.env.NODE_ENV !== "test") {
+  connectDb()
+    .then(() =>
+      app.listen(PORT, () =>
+        console.log(`Express API: http://localhost:${PORT}`)
+      )
+    )
+    .catch((error) => {
+      console.error(error);
+      process.exit(1);
+    });
+}
+
+module.exports = app;

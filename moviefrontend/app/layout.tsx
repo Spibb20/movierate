@@ -1,28 +1,33 @@
-import type { Metadata } from "next"
-import { Inter, Space_Mono } from "next/font/google"
-
-import "./globals.css"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { RentalProvider } from "@/lib/rental-store"
-
-const _inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const _spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
-})
+import type { Metadata } from "next";
+import "./globals.css";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { RentalProvider } from "@/lib/rental-store";
 
 export const metadata: Metadata = {
-  title: "MovieRate.mn - Кино мэдээлэл, үнэлгээ",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
+  title: {
+    default: "MovieRate.mn - Кино мэдээлэл, үнэлгээ",
+    template: "%s | MovieRate.mn",
+  },
   description:
     "Кино хайх, үнэлгээ өгөх, трейлэр үзэх, сэтгэгдэл бичих платформ.",
-}
+  openGraph: {
+    title: "MovieRate.mn - Кино мэдээлэл, үнэлгээ",
+    description:
+      "Кино хайх, үнэлгээ өгөх, трейлэр үзэх, сэтгэгдэл бичих платформ.",
+    images: ["/placeholder-logo.png"],
+    type: "website",
+  },
+  robots: { index: true, follow: true },
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="mn">
@@ -36,5 +41,5 @@ export default function RootLayout({
         </RentalProvider>
       </body>
     </html>
-  )
+  );
 }
