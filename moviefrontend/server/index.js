@@ -50,7 +50,7 @@ function publicUser(user) {
 function setSessionCookie(res, rawToken, expiresAt) {
   res.cookie("session", rawToken, {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: isProduction ? "none" : "lax",
     secure: isProduction,
     expires: expiresAt,
     path: "/",
@@ -60,7 +60,7 @@ function setSessionCookie(res, rawToken, expiresAt) {
 function clearSessionCookie(res) {
   res.clearCookie("session", {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: isProduction ? "none" : "lax",
     secure: isProduction,
     path: "/",
   });
